@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashtag Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-image: url('new.jpg'); /* Replace with the actual path to your image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .jumbotron {
+            background-image: url('new1.jpg'); /* Replace with the actual path to your image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            padding: 50px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        
+        .prompt-container{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: #6c63ff;
+        }
+
+        .section h3 {
+            font-size: 24px;
+        }
+
+        .section p {
+            font-size: 16px;
+        }
+
+        /* Added styles for buttons */
+        .btn-primary {
+            background-color: #6c63ff;
+            border-color: #6c63ff;
+        }
+
+        .btn-primary:hover {
+            background-color: #564dff;
+            border-color: #564dff;
+        }
+
+        .btn-secondary {
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+            color: #6c63ff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e6ea;
+            border-color: #e2e6ea;
+            color: #6c63ff;
+        }
+
+        .btn-danger {
+            background-color: #ff5c5c;
+            border-color: #ff5c5c;
+        }
+
+        .btn-danger:hover {
+            background-color: #ff4141;
+            border-color: #ff4141;
+        }
+
+        /* Added hover styles for hashtags */
+        .badge-primary:hover {
+            background-color: #564dff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Creative Hashtag Generator</h1>
+        <p class="lead">Enhance your social media presence with relevant and catchy hashtags!</p>
+        <hr class="my-4">
+        <p>Unlock the power of effective hashtags to reach your audience.</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="prompt-container">
+            <h2 class="mb-4">Generate Trending Hashtags</h2>
+            <form id="hashtagForm">
+                <div class="form-group">
+                    <label for="hashtagType">Choose a Category:</label>
+                    <select class="form-control" id="hashtagType">
+                        <option value="writing">Writing</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="youtube">YouTube</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="travel">Travel</option>
+                        <option value="photography">Photography</option>
+                        <option value="food">Food</option>
+                        <option value="tech">Tech</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="quotes">Quotes</option>
+                        <option value="beauty">Beauty</option>
+                        <!-- Add more categories here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numHashtags">Number of Hashtags:</label>
+                    <input type="number" class="form-control" id="numHashtags" value="5" min="1">
+                </div>
+                <button type="button" class="btn btn-primary" id="generateBtn">Generate Hashtags</button>
+            </form>
+            <div class="hashtag-output" id="hashtags"></div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fas fa-pen"></i> Writing Hashtags</h3>
+                    <p>Boost your writing posts with these popular hashtags that connect you with fellow writers and readers. 📝✒️</p>
+                    <ul>
+                        <li>#CreativeWriting</li>
+                        <li>#WritingCommunity</li>
+                        <!-- Add more writing-related hashtags -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fas fa-camera"></i> Photography Hashtags</h3>
+                    <p>Make your photography stand out on social media platforms by using these captivating photography hashtags. 📷🌅</p>
+                    <ul>
+                        <li>#Photography</li>
+                        <li>#PhotoOfTheDay</li>
+                        <!-- Add more photography-related hashtags -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fas fa-utensils"></i> Food Hashtags</h3>
+                    <p>Whether you're a food blogger or just love sharing your culinary creations, these food hashtags will spice up your posts. 🍔🍕</p>
+                    <ul>
+                        <li>#Foodie</li>
+                        <li>#DeliciousEats</li>
+                        <!-- Add more food-related hashtags -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fab fa-youtube"></i> YouTube Hashtags</h3>
+                    <p>Give your YouTube videos a boost with these trending hashtags that help you reach a larger audience. 🎥📺</p>
+                    <ul>
+                        <li>#Tutorial</li>
+                        <li>#Vlog</li>
+                        <!-- Add more YouTube hashtags -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fab fa-instagram"></i> Instagram Hashtags</h3>
+                    <p>Elevate your Instagram game with these popular and niche-specific hashtags that get your posts noticed. 📸🌟</p>
+                    <ul>
+                        <li>#InstaArt</li>
+                        <li>#FitnessMotivation</li>
+                        <!-- Add more Instagram hashtags -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="section">
+                    <h3><i class="fas fa-globe-americas"></i> Travel Hashtags</h3>
+                    <p>Share your travel adventures with the world using these wanderlust-inducing travel hashtags. ✈️🌍</p>
+                    <ul>
+                        <li>#Wanderlust</li>
+                        <li>#TravelDiaries</li>
+                        <!-- Add more travel-related hashtags -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More sections can go here -->
+
+    <footer class="bg-light py-4 text-center mt-5">
+        <div class="container">
+            <p class="mb-0">Powered by OpenAI | &copy; 2023 YourWebsiteName</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const generateBtn = document.getElementById("generateBtn");
+            const hashtagOutput = document.getElementById("hashtags");
+
+            const hashtagTypes = {
+                writing: [
+                    "#CreativeWriting",
+                    "#WritingCommunity",
+                    // Add more writing-related hashtags
+                ],
+                fashion: [
+                    "#Fashionista",
+                    "#StyleInspiration",
+                    // Add more fashion-related hashtags
+                ],
+                youtube: [
+                    "#Tutorial",
+                    "#Vlog",
+                    // Add more YouTube hashtags
+                ],
+                instagram: [
+                    "#InstaArt",
+                    "#FitnessMotivation",
+                    // Add more Instagram hashtags
+                ],
+                travel: [
+                    "#Wanderlust",
+                    "#TravelDiaries",
+                    // Add more travel-related hashtags
+                ],
+                photography: [
+                    "#Photography",
+                    "#PhotoOfTheDay",
+                    // Add more photography-related hashtags
+                ],
+                food: [
+                    "#Foodie",
+                    "#DeliciousEats",
+                    // Add more food-related hashtags
+                ],
+                tech: [
+                    "#TechInnovation",
+                    "#GadgetLover",
+                    // Add more tech-related hashtags
+                ],
+                fitness: [
+                    "#FitnessJourney",
+                    "#HealthyLifestyle",
+                    // Add more fitness-related hashtags
+                ],
+                quotes: [
+                    "#QuoteOfTheDay",
+                    "#InspirationalQuotes",
+                    // Add more quotes-related hashtags
+                ],
+                beauty: [
+                    "#BeautyTips",
+                    "#MakeupInspiration",
+                    // Add more beauty-related hashtags
+                ],
+                // Add even more categories...
+            };
+
+            generateBtn.addEventListener("click", () => {
+                const hashtagType = document.getElementById("hashtagType").value;
+                const numHashtags = parseInt(document.getElementById("numHashtags").value);
+
+                const hashtags = generateHashtags(hashtagType, numHashtags);
+                displayHashtags(hashtags);
+            });
+
+            function generateHashtags(type, num) {
+                const selectedHashtags = hashtagTypes[type];
+                if (!selectedHashtags) {
+                    return [];
+                }
+
+                const generatedHashtags = [];
+                for (let i = 0; i < num; i++) {
+                    const randomIndex = Math.floor(Math.random() * selectedHashtags.length);
+                    generatedHashtags.push(selectedHashtags[randomIndex]);
+                }
+
+                return generatedHashtags;
+            }
+
+            function displayHashtags(hashtags) {
+                hashtagOutput.innerHTML = "";
+                hashtags.forEach(tag => {
+                    const hashtagSpan = document.createElement("span");
+                    hashtagSpan.classList.add("badge", "badge-primary", "mr-2");
+                    hashtagSpan.textContent = tag;
+                    hashtagOutput.appendChild(hashtagSpan);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
